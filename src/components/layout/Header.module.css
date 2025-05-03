@@ -1,0 +1,84 @@
+/* Layout.module.css */
+.wrapper {
+    display: flex;
+    min-width: 320px;
+    height: 56px;
+    padding: 8px 20px 8px 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wrapper img {
+    height: 24px;
+    width: 24px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.iconHover {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.iconHover:hover {
+    background-color: #dfe3e8;
+}
+
+.iconHover img {
+    height: 20px;
+    width: 20px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.leftContainer {
+    display: flex;
+    align-items: center;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.logoContainer h1 {
+    font-size: 20px;
+    weight: 700;
+    cursor: pointer;
+}
+
+.searchBarContainer {
+    display: flex;
+    flex: 1;
+    max-width: 500px;
+    height: 40px;
+    margin: 0px 20px;
+    padding: 0px 4px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f6f7fb;
+    border-radius: 100px;
+}
+
+@media (max-width: 700px) {
+    .searchBarContainer {
+        display: none;
+    }
+}
+
+.searchBarContainer input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: Gilroy;
+    font-size: 16px;
+    font-weight: 500;
+    color: #667180;
+}
