@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './Header.module.css';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useSideBarStore } from '../../store/useSideBarStore';
 
 // icon
 import logo from '../../assets/logo.svg';
@@ -15,6 +16,9 @@ function Header() {
     const [searchValue, setSearchValue] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
     const location = useLocation();
+
+    // 사이드 여닫기
+    const toggleSideBar = useSideBarStore((state) => state.toggle);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value);
@@ -48,7 +52,7 @@ function Header() {
             {/* 왼쪽 sidebar  */}
             <div className={styles.leftContainer}>
                 <div className={styles.iconHover}>
-                    <img src={stackbar} alt="sideBarIcon" />
+                    <img src={stackbar} alt="sideBarIcon" onClick={toggleSideBar} />
                 </div>
                 <div className={styles.logoContainer} onClick={toMain}>
                     <img src={logo} alt="logoImg" />
@@ -74,8 +78,9 @@ function Header() {
                     <img src={sort} alt="sortIcon" />
                 </div>
             </div>
+            {/* 사용자 */}
             <div>
-                <p>사용자</p>
+                <p>User</p>
             </div>
         </header>
     );

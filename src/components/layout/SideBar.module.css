@@ -1,25 +1,6 @@
 /* Layout.module.css */
 .wrapper {
-    height: 100vh;
-    width: 400px;
+    width: 240px;
+    padding: 8px;
     background-color: #f6f7fb;
-    padding: 25px 60px;
-}
-
-.headerContainer {
-    height: 100px;
-    display: flex;
-    align-items: top;
-    gap: 12px;
-}
-
-.headerContainer img {
-    width: 30px;
-    height: 30px;
-}
-
-.headerContainer h1 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0px;
 }

@@ -1,5 +1,12 @@
 /* Layout.module.css */
 .wrapper {
     display: flex;
+    flex-direction: column;
     height: 100vh;
+    box-sizing: border-box; /* padding 포함 */
+}
+
+.main {
+    display: flex;
+    flex: 1;
 }
