@@ -2,12 +2,15 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
 import NotFound from './pages/NotFound';
-import Layout from './components/\blayout/Layout';
 import Today from './pages/Today';
 import Upcoming from './pages/Upcoming';
 import Calendar from './pages/Calendar';
 import { useUserPagesStore } from './store/useUserPagesStore';
 import UserPage from './pages/UserPage';
+import PrivateRoutes from './components/Routes/PrivateRoutes';
+import Login from './pages/Login';
+import PublicRoute from './components/Routes/PublicRoutes';
+import OAuthRedirect from './pages/OAuthRedirect';
 
 function App() {
     const { pages } = useUserPagesStore();
@@ -15,11 +18,18 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route element={<Layout />}>
-                        <Route path="/" element={<Main />}></Route>
-                        <Route path="/today" element={<Today />}></Route>
-                        <Route path="/upcoming" element={<Upcoming />}></Route>
-                        <Route path="/calendar" element={<Calendar />}></Route>
+                    {/* 로그인 필요 없는 공개 라우트 */}
+                    <Route element={<PublicRoute />}>
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/oauth2/redirect" element={<OAuthRedirect />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Route>
+                    {/* 로그인 필요한 라우트 */}
+                    <Route element={<PrivateRoutes />}>
+                        <Route path="/" element={<Main />} />
+                        <Route path="/today" element={<Today />} />
+                        <Route path="/upcoming" element={<Upcoming />} />
+                        <Route path="/calendar" element={<Calendar />} />
                         {pages.map((page) => (
                             <Route
                                 key={page.id.toString()}
@@ -28,7 +38,6 @@ function App() {
                             />
                         ))}
                     </Route>
-                    <Route path="*" element={<NotFound />}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
