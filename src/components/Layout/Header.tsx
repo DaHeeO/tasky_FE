@@ -17,6 +17,8 @@ function Header() {
     const inputRef = useRef<HTMLInputElement>(null);
     const location = useLocation();
 
+    const imgUrl = localStorage.getItem('image');
+
     // 사이드 여닫기
     const toggleSideBar = useSideBarStore((state) => state.toggle);
 
@@ -79,9 +81,7 @@ function Header() {
                 </div>
             </div>
             {/* 사용자 */}
-            <div>
-                <p>User</p>
-            </div>
+            <div className={styles.userProfile}>{imgUrl ? <img src={imgUrl} alt="userImg" /> : <></>}</div>
         </header>
     );
 }
