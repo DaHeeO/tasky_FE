@@ -1,28 +1,43 @@
 // SideBar.tsx
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { useUserPagesStore } from '../../store/useUserPagesStore';
 import styles from './SideBar.module.css';
 
-function SideBar() {
-    const { pages, addPage } = useUserPagesStore();
+import HomeIcon from '../../assets/home.svg';
+import TodayIcon from '../../assets/today.svg';
+import UpcomingIcon from '../../assets/up-coming.svg';
+import CalendarIcon from '../../assets/calendar.svg';
 
+interface Path {
+    path: string;
+    name: string;
+    Icon?: any;
+}
+
+const commonPaths: Path[] = [
+    { path: '/', name: 'Main', Icon: HomeIcon },
+    { path: '/today', name: 'Today', Icon: TodayIcon },
+    { path: '/upcoming', name: 'Upcoming', Icon: UpcomingIcon },
+    { path: '/calendar', name: 'Calendar', Icon: CalendarIcon },
+];
+function SideBar() {
     return (
         <div className={styles.wrapper}>
             <nav>
-                <Link to="/">Main</Link>
-                <Link to="/today">Today</Link>
-                <Link to="/upcoming">Upcoming</Link>
-                <Link to="/calendar">Calendar</Link>
-                <hr />
-                {pages.map((page) => (
-                    <Link key={page.id.toString()} to={page.path}>
-                        {page.title}
-                    </Link>
-                ))}
+                {commonPaths.map((pathInfo) => {
+                    return <SideBarComponent key={pathInfo.path} {...pathInfo} />;
+                })}
             </nav>
-            <button onClick={() => addPage('New Page')}>+ 새 페이지</button>
         </div>
     );
 }
+
+const SideBarComponent = ({ path, name, Icon }: Path) => {
+    return (
+        <Link to={path} className={styles.LinkContainer}>
+            {Icon && <img src={Icon} alt={name} />}
+            <span>{name}</span>
+        </Link>
+    );
+};
+
 export default SideBar;

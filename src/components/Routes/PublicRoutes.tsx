@@ -1,4 +1,3 @@
-import React from 'react';
 import { Navigate } from 'react-router';
 import { Outlet } from 'react-router-dom';
 import getIsLogin from '../../utils/getIsLogin';

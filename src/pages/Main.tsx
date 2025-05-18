@@ -11,6 +11,7 @@ function Main() {
     return (
         <div>
             <p>Main Page</p>
+            <p>{localStorage.getItem('name')}</p>
             <button onClick={handleLogout}>log out</button>
         </div>
     );

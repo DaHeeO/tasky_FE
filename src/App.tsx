@@ -5,15 +5,12 @@ import NotFound from './pages/NotFound';
 import Today from './pages/Today';
 import Upcoming from './pages/Upcoming';
 import Calendar from './pages/Calendar';
-import { useUserPagesStore } from './store/useUserPagesStore';
-import UserPage from './pages/UserPage';
 import PrivateRoutes from './components/Routes/PrivateRoutes';
 import Login from './pages/Login';
 import PublicRoute from './components/Routes/PublicRoutes';
 import OAuthRedirect from './pages/OAuthRedirect';
 
 function App() {
-    const { pages } = useUserPagesStore();
     return (
         <div className="App">
             <BrowserRouter>
@@ -22,7 +19,6 @@ function App() {
                     <Route element={<PublicRoute />}>
                         <Route path="/login" element={<Login />} />
                         <Route path="/oauth2/redirect" element={<OAuthRedirect />} />
-                        <Route path="*" element={<NotFound />} />
                     </Route>
                     {/* 로그인 필요한 라우트 */}
                     <Route element={<PrivateRoutes />}>
@@ -30,14 +26,8 @@ function App() {
                         <Route path="/today" element={<Today />} />
                         <Route path="/upcoming" element={<Upcoming />} />
                         <Route path="/calendar" element={<Calendar />} />
-                        {pages.map((page) => (
-                            <Route
-                                key={page.id.toString()}
-                                path={page.path}
-                                element={<UserPage pageId={page.id.toString()} />}
-                            />
-                        ))}
                     </Route>
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
         </div>
