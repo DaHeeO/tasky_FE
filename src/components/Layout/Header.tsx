@@ -49,6 +49,10 @@ function Header() {
         setSearchValue('');
     };
 
+    const handleSettingPopUp = () => {
+        console.log('logout');
+    };
+
     return (
         <header className={styles.wrapper}>
             {/* 왼쪽 sidebar  */}
@@ -81,7 +85,9 @@ function Header() {
                 </div>
             </div>
             {/* 사용자 */}
-            <div className={styles.userProfile}>{imgUrl ? <img src={imgUrl} alt="userImg" /> : <></>}</div>
+            <div onClick={handleSettingPopUp} className={styles.userProfile}>
+                {imgUrl ? <img src={imgUrl} alt="userImg" /> : <></>}
+            </div>
         </header>
     );
 }

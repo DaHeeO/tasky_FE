@@ -1,11 +1,10 @@
 // SideBar.tsx
 import { Link } from 'react-router-dom';
 import styles from './SideBar.module.css';
-
-import HomeIcon from '../../assets/home.svg';
-import TodayIcon from '../../assets/today.svg';
-import UpcomingIcon from '../../assets/up-coming.svg';
-import CalendarIcon from '../../assets/calendar.svg';
+import HomeIcon from '../../assets/HomeIcon';
+import CalendarIcon from '../../assets/CalendarIcon';
+import PencilIcon from '../../assets/PencilIcon';
+import InboxIcon from '../../assets/InboxIcon';
 
 interface Path {
     path: string;
@@ -14,11 +13,12 @@ interface Path {
 }
 
 const commonPaths: Path[] = [
-    { path: '/', name: 'Main', Icon: HomeIcon },
-    { path: '/today', name: 'Today', Icon: TodayIcon },
-    { path: '/upcoming', name: 'Upcoming', Icon: UpcomingIcon },
+    { path: '/', name: 'Home', Icon: HomeIcon },
+    { path: '/today', name: 'Today', Icon: PencilIcon },
+    { path: '/upcoming', name: 'Upcoming', Icon: InboxIcon },
     { path: '/calendar', name: 'Calendar', Icon: CalendarIcon },
 ];
+
 function SideBar() {
     return (
         <div className={styles.wrapper}>
@@ -34,7 +34,7 @@ function SideBar() {
 const SideBarComponent = ({ path, name, Icon }: Path) => {
     return (
         <Link to={path} className={styles.LinkContainer}>
-            {Icon && <img src={Icon} alt={name} />}
+            {Icon && <Icon size={20} color={'#000000'} />}
             <span>{name}</span>
         </Link>
     );

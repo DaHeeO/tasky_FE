@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import getIsLogin from '../../utils/getIsLogin';
-import Layout from '../Layout/Layout';
+import Layout from '../layout/Layout';
 // import getIsLogin from "utils/getIsLogin";
 
 function PrivateRoutes() {

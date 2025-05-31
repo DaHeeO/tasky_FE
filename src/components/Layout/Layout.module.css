@@ -4,9 +4,46 @@
     flex-direction: column;
     height: 100vh;
     box-sizing: border-box; /* padding 포함 */
+    background-color: #f6f7fb;
 }
 
 .main {
-    display: flex;
     flex: 1;
+    display: flex;
+    height: calc(100vh - /* header height */ 60px);
+}
+
+.sidebarContainer {
+    transition: width 0.3s ease;
+    overflow: hidden;
+    width: 200px;
+    height: 100%;
+}
+
+/* 사이드바 자체는 항상 width: 200px이고, 내부에서 transform으로 애니메이션 */
+.sidebarContainer > div {
+    height: 100%;
+    width: 200px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.open > div {
+    transform: translateX(0);
+}
+
+.closed {
+    width: 0;
+}
+
+.closed > div {
+    transform: translateX(-100%);
+}
+
+.outlet {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 1rem;
+    overflow-y: auto;
 }

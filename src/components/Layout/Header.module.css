@@ -2,7 +2,7 @@
 .wrapper {
     display: flex;
     min-width: 320px;
-    height: 56px;
+    height: 40px;
     padding: 8px 20px 8px 10px;
     align-items: center;
     justify-content: space-between;
@@ -40,7 +40,7 @@
 .leftContainer {
     display: flex;
     align-items: center;
-    width: 240px;
+    width: 220px;
 }
 
 .logoContainer {
@@ -63,7 +63,7 @@
     padding: 0px 4px;
     align-items: center;
     justify-content: space-between;
-    background-color: #f6f7fb;
+    background-color: #ffffff;
     border-radius: 100px;
 }
 

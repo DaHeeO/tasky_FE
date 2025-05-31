@@ -1,8 +1,6 @@
-/* Layout.module.css */
 .wrapper {
-    width: 240px;
+    width: 220px;
     padding: 8px;
-    background-color: #f6f7fb;
 }
 
 .wrapper nav {
@@ -14,7 +12,7 @@
     display: flex;
     flex: 1;
     height: 40px;
-    padding: 8px;
+    padding: 10px;
     gap: 12px;
     align-items: center;
     text-decoration-line: none;

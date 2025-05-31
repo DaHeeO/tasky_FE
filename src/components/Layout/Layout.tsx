@@ -31,6 +31,8 @@ function Layout() {
             } else {
                 setSidebarOpen(true);
             }
+
+            console.log(isOpen);
         };
 
         window.addEventListener('resize', handleResize);
@@ -43,8 +45,10 @@ function Layout() {
         <div className={styles.wrapper}>
             <Header />
             <div className={styles.main}>
-                {isOpen && <SideBar />}
-                <main>
+                <div className={`${styles.sidebarContainer} ${isOpen ? styles.open : styles.closed}`}>
+                    <SideBar />
+                </div>
+                <main className={styles.outlet}>
                     <Outlet />
                 </main>
             </div>

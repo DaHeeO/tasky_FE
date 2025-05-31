@@ -5,9 +5,9 @@ import NotFound from './pages/NotFound';
 import Today from './pages/Today';
 import Upcoming from './pages/Upcoming';
 import Calendar from './pages/Calendar';
-import PrivateRoutes from './components/Routes/PrivateRoutes';
+import PrivateRoutes from './components/routes/PrivateRoutes';
 import Login from './pages/Login';
-import PublicRoute from './components/Routes/PublicRoutes';
+import PublicRoute from './components/routes/PublicRoutes';
 import OAuthRedirect from './pages/OAuthRedirect';
 
 function App() {
