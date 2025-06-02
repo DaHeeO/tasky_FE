@@ -31,8 +31,6 @@ function Layout() {
             } else {
                 setSidebarOpen(true);
             }
-
-            console.log(isOpen);
         };
 
         window.addEventListener('resize', handleResize);

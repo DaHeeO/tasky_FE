@@ -9,6 +9,7 @@ import stackbar from '../../assets/align-left.svg';
 import searchBar from '../../assets/search.svg';
 import sort from '../../assets/adjustments-horizontal.svg';
 import x from '../../assets/x.svg';
+import emptyUser from '../../assets/Avatar.svg';
 
 function Header() {
     const navigate = useNavigate();
@@ -85,8 +86,8 @@ function Header() {
                 </div>
             </div>
             {/* 사용자 */}
-            <div onClick={handleSettingPopUp} className={styles.userProfile}>
-                {imgUrl ? <img src={imgUrl} alt="userImg" /> : <></>}
+            <div onClick={handleSettingPopUp} className={imgUrl ? styles.googleUser : styles.userProfileDefault}>
+                <img src={imgUrl ? imgUrl : emptyUser} alt="userImg" />
             </div>
         </header>
     );
