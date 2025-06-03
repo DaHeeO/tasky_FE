@@ -1,6 +1,7 @@
 .wrapper {
     width: 220px;
     padding: 8px;
+    box-sizing: border-box;
 }
 
 .wrapper nav {
@@ -9,6 +10,8 @@
 }
 
 .LinkContainer {
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex: 1;
     height: 40px;
@@ -17,13 +20,82 @@
     align-items: center;
     text-decoration-line: none;
     color: inherit;
+    z-index: 0;
+    transition: color 0.3s ease;
 }
 
-.LinkContainer img {
-    width: 23px;
-    height: 23px;
+.LinkContainer:hover:not(.active) {
+    background-color: #dfe3e8;
+    border-radius: 10px;
+}
+
+.LinkContainer::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 30%;
+    background-color: #e65100;
+    border-radius: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transition: none;
+}
+
+.active {
+    color: #e65100;
+    border-radius: 10px;
+    position: relative;
+    background-color: rgba(248, 213, 126, 0.3);
+    z-index: 1;
+}
+
+.active::after {
+    animation: loadingBarMove 1s ease forwards;
+    opacity: 1;
 }
 
 .LinkContainer span {
     font-size: 16px;
+}
+
+@keyframes loadingBarMove {
+    0% {
+        left: 0;
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes shakeTwice {
+    0% {
+        transform: rotate(0deg);
+    }
+    15% {
+        transform: rotate(10deg);
+    }
+    30% {
+        transform: rotate(-10deg);
+    }
+    45% {
+        transform: rotate(10deg);
+    }
+    60% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.activeIcon {
+    animation: shakeTwice 0.6s ease-in-out;
+    transform-origin: center;
 }
