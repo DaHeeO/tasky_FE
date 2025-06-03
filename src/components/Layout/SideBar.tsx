@@ -5,12 +5,7 @@ import HomeIcon from '../../assets/HomeIcon';
 import CalendarIcon from '../../assets/CalendarIcon';
 import PencilIcon from '../../assets/PencilIcon';
 import InboxIcon from '../../assets/InboxIcon';
-
-interface Path {
-    path: string;
-    name: string;
-    Icon?: any;
-}
+import { Path } from '../../interface/PathInterface';
 
 const commonPaths: Path[] = [
     { path: '/', name: 'Home', Icon: HomeIcon },

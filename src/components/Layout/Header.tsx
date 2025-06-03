@@ -10,6 +10,7 @@ import searchBar from '../../assets/search.svg';
 import sort from '../../assets/adjustments-horizontal.svg';
 import x from '../../assets/x.svg';
 import emptyUser from '../../assets/Avatar.svg';
+import UserModal from '../modal/UserModal';
 
 function Header() {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ function Header() {
     const [searchValue, setSearchValue] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
     const location = useLocation();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const imgUrl = localStorage.getItem('image');
 
@@ -48,10 +50,6 @@ function Header() {
         // 아이콘 눌러도 갱신 안되는거 막기 위해 직접 구현함.
         navigate('/');
         setSearchValue('');
-    };
-
-    const handleSettingPopUp = () => {
-        console.log('logout');
     };
 
     return (
@@ -86,9 +84,13 @@ function Header() {
                 </div>
             </div>
             {/* 사용자 */}
-            <div onClick={handleSettingPopUp} className={imgUrl ? styles.googleUser : styles.userProfileDefault}>
+            <div
+                onClick={() => setIsModalOpen(true)}
+                className={imgUrl ? styles.googleUser : styles.userProfileDefault}
+            >
                 <img src={imgUrl ? imgUrl : emptyUser} alt="userImg" />
             </div>
+            {isModalOpen && <UserModal onClose={() => setIsModalOpen(false)} />}
         </header>
     );
 }

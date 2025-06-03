@@ -1,0 +1,21 @@
+.LinkContainer {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    padding: 0px 6px;
+    height: 32px;
+    gap: 6px;
+    align-items: center;
+    text-decoration-line: none;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+.LinkContainer span {
+    font-size: 13px;
+}
+
+.LinkContainer:hover {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}

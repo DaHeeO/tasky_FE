@@ -9,6 +9,7 @@ import PrivateRoutes from './components/routes/PrivateRoutes';
 import Login from './pages/Login';
 import PublicRoute from './components/routes/PublicRoutes';
 import OAuthRedirect from './pages/OAuthRedirect';
+import Settings from './pages/Settings';
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                         <Route path="/today" element={<Today />} />
                         <Route path="/upcoming" element={<Upcoming />} />
                         <Route path="/calendar" element={<Calendar />} />
+                        <Route path="/settings" element={<Settings />} />
                     </Route>
                     <Route path="*" element={<NotFound />} />
                 </Routes>
