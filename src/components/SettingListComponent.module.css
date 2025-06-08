@@ -9,6 +9,7 @@
     text-decoration-line: none;
     color: inherit;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .LinkContainer span {

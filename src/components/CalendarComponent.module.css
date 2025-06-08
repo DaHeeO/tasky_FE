@@ -1,0 +1,54 @@
+.calendar {
+    width: 100%;
+    /* sidebar까지 고려한 width임 */
+    min-width: 500px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+    height: 30px;
+}
+
+.body {
+    flex: 1; /* 헤더 제외한 영역 전체 차지 */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+}
+
+.weeks {
+    flex: 1;
+    display: grid;
+}
+
+.week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+    border: 1px solid #eee;
+    text-align: center;
+    padding-top: 12px;
+}
+
+.outside {
+    color: #ccc;
+}

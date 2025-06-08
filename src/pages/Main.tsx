@@ -1,18 +1,11 @@
-import { useNavigate } from 'react-router-dom';
+import TaskComponent from '../components/TaskComponent';
+import styles from './Main.module.css';
 
 function Main() {
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        localStorage.clear();
-        navigate('/login');
-    };
-
     return (
-        <div>
-            <p>Main Page</p>
-            <p>{localStorage.getItem('name')}</p>
-            <button onClick={handleLogout}>log out</button>
+        <div className={styles.wrapper}>
+            <h1>Main Board</h1>
+            <TaskComponent />
         </div>
     );
 }

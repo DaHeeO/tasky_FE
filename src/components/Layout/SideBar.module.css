@@ -22,6 +22,7 @@
     color: inherit;
     z-index: 0;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 .LinkContainer:hover:not(.active) {
@@ -36,7 +37,7 @@
     left: 0;
     height: 1px;
     width: 30%;
-    background-color: #e65100;
+    background-color: #ff8c00;
     border-radius: 2px;
     opacity: 0;
     pointer-events: none;

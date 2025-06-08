@@ -44,6 +44,6 @@
     background: #ffffff;
     border-radius: 10px;
     margin: 10px;
-    padding: 1rem;
     overflow-y: auto;
+    border-box: box-sizing;
 }

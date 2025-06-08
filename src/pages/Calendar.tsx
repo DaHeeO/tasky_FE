@@ -1,12 +1,10 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import CalendarComponent from '../components/CalendarComponent';
+import styles from './Calendar.module.css';
 
 function Calendar() {
-    const navigate = useNavigate();
     return (
-        <div>
-            <p>Calendar Page</p>
-            <button onClick={() => navigate('/')}>Main</button>
+        <div className={styles.wrapper}>
+            <CalendarComponent />
         </div>
     );
 }
