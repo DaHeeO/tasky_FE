@@ -8,15 +8,47 @@
     box-sizing: border-box;
     margin: auto;
     padding: 20px;
+    user-select: none;
 }
 
 .header {
     display: flex;
     justify-content: start;
     align-items: center;
-    gap: 20px;
+    gap: 8px;
+    height: 24px;
+    padding-bottom: 16px;
+}
+
+.header span {
     font-size: 18px;
-    height: 30px;
+    line-height: 24px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.switchButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.switchButton > div {
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.switchButton > div:hover {
+    background-color: #ededed;
+    border-radius: 4px;
+}
+
+.switchButton > div:active {
+    background-color: #dfe3e8;
+}
+
+.switchButton svg {
+    display: block;
 }
 
 .body {

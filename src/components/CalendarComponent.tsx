@@ -1,10 +1,26 @@
 import { useState } from 'react';
 import styles from './CalendarComponent.module.css';
+import ArrowRightIcon from '../assets/ArrowRightIcon';
+import ArrowLeftIcon from '../assets/ArrowLeftIcon';
 
 const CalendarComponent = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth(); //js -> 0 ~ 11 로 달 표시
+    const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+    ];
 
     // 달력 첫주 시작 날 정하기
     const firstDayOfMonth = new Date(year, month, 1);
@@ -53,9 +69,17 @@ const CalendarComponent = () => {
         <div className={styles.calendar}>
             {/* 헤더 */}
             <div className={styles.header}>
-                <button onClick={handlePrevMonth}>&lt;</button>
-                <span>{`${year}년 ${month + 1}월`}</span>
-                <button onClick={handleNextMonth}>&gt;</button>
+                <div className={styles.switchButton}>
+                    <div onClick={handlePrevMonth}>
+                        <ArrowLeftIcon color="#000000" stroke={1} size={24} />
+                    </div>
+                    <div onClick={handleNextMonth}>
+                        <ArrowRightIcon color="#000000" stroke={1} size={24} />
+                    </div>
+                </div>
+                <span>
+                    {months[month]}&nbsp;{year}
+                </span>
             </div>
 
             {/* 달력 전체 영역 (요일 + 날짜들) */}
@@ -63,9 +87,7 @@ const CalendarComponent = () => {
                 {/* 요일 헤더 */}
                 <div className={styles.weekdays}>
                     {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-                        <div key={day} className={styles.weekday}>
-                            {day}
-                        </div>
+                        <div key={day}>{day}</div>
                     ))}
                 </div>
 

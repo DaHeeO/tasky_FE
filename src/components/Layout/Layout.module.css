@@ -43,7 +43,7 @@
     flex: 1;
     background: #ffffff;
     border-radius: 10px;
-    margin: 10px;
+    margin: 10px 20px 10px 10px;
     overflow-y: auto;
     border-box: box-sizing;
 }

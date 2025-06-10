@@ -6,6 +6,7 @@
     padding: 8px 20px 8px 10px;
     align-items: center;
     justify-content: space-between;
+    user-select: none;
 }
 
 .iconHover {
