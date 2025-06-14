@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import styles from './CalendarComponent.module.css';
 import ArrowRightIcon from '../assets/ArrowRightIcon';
 import ArrowLeftIcon from '../assets/ArrowLeftIcon';
@@ -66,15 +66,38 @@ const CalendarComponent = () => {
         );
     };
 
-    const handlePrevMonth = () => {
-        // 이전 달로 이동
-        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
+    const handlePrevMonth = useCallback(() => {
+        setCurrentDate((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1));
+    }, []);
+
+    const handleNextMonth = useCallback(() => {
+        setCurrentDate((prev) => new Date(prev.getFullYear(), prev.getMonth() + 1, 1));
+    }, []);
+
+    const handleThisMonth = () => {
+        setCurrentDate(new Date(new Date()));
     };
 
-    const handleNextMonth = () => {
-        // 다음 달로 이동
-        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
-    };
+    const isScrolling = useRef(false);
+
+    const handleWheel = useCallback(
+        (e: React.WheelEvent<HTMLDivElement>) => {
+            if (isScrolling.current) return;
+
+            isScrolling.current = true;
+
+            if (e.deltaY > 0) {
+                handleNextMonth();
+            } else if (e.deltaY < 0) {
+                handlePrevMonth();
+            }
+
+            setTimeout(() => {
+                isScrolling.current = false;
+            }, 300);
+        },
+        [handleNextMonth, handlePrevMonth]
+    );
 
     return (
         <div className={styles.calendar}>
@@ -87,10 +110,11 @@ const CalendarComponent = () => {
                     <div onClick={handleNextMonth}>
                         <ArrowRightIcon color="#000000" stroke={1} size={24} />
                     </div>
+                    <span>
+                        {months[month]}&nbsp;{year}
+                    </span>
                 </div>
-                <span>
-                    {months[month]}&nbsp;{year}
-                </span>
+                <button onClick={handleThisMonth}>Today</button>
             </div>
 
             {/* 달력 전체 영역 (요일 + 날짜들) */}
@@ -103,7 +127,7 @@ const CalendarComponent = () => {
                 </div>
 
                 {/* 날짜 주 단위 */}
-                <div className={styles.weeks}>
+                <div className={styles.weeks} onWheel={handleWheel}>
                     {groupDatesByWeek(startDay, lastDay).map((week, weekIndex) => (
                         <div key={weekIndex} className={styles.week}>
                             {week.map((date, dateIndex) => (
@@ -115,7 +139,10 @@ const CalendarComponent = () => {
                                     ${date.getDay() === 0 || date.getDay() === 6 ? styles.weekend : ''}
                                     `}
                                 >
-                                    <span className={isToday(date) ? styles.today : ''}>{padZero(date.getDate())}</span>
+                                    <span className={isToday(date) ? styles.today : ''}>
+                                        {date.getDate() === 1 ? `${months[date.getMonth()]} ` : ''}
+                                        {padZero(date.getDate())}
+                                    </span>
                                 </div>
                             ))}
                         </div>

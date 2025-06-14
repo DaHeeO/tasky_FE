@@ -13,18 +13,25 @@
 
 .header {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
     height: 24px;
-    padding-bottom: 24px;
+    padding: 0px 12px 24px 0px;
 }
 
-.header span {
-    font-size: 18px;
-    line-height: 24px;
-    text-align: center;
-    font-weight: 700;
+.header > button {
+    all: unset;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    border: 1px solid #d9d9d9;
+}
+
+.header > button:hover {
+    background-color: #ededed;
 }
 
 .switchButton {
@@ -51,8 +58,16 @@
     display: block;
 }
 
+.switchButton > span {
+    padding-left: 8px;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    font-weight: 700;
+}
+
 .body {
-    flex: 1; /* 헤더 제외한 영역 전체 차지 */
+    flex: 1;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -67,7 +82,7 @@
 }
 
 .weekdays > div {
-    padding-left: 4px; /* 원하는 만큼 조절 */
+    padding-left: 4px;
 }
 
 .weeks {
