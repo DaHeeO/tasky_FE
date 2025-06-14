@@ -55,6 +55,17 @@ const CalendarComponent = () => {
         return weeks; // 주 단위로 그룹화된 날짜 배열들을 반환
     };
 
+    const padZero = (num: number): string => String(num).padStart(2, '0');
+
+    const isToday = (date: Date) => {
+        const today = new Date();
+        return (
+            date.getFullYear() === today.getFullYear() &&
+            date.getMonth() === today.getMonth() &&
+            date.getDate() === today.getDate()
+        );
+    };
+
     const handlePrevMonth = () => {
         // 이전 달로 이동
         setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
@@ -98,9 +109,13 @@ const CalendarComponent = () => {
                             {week.map((date, dateIndex) => (
                                 <div
                                     key={dateIndex}
-                                    className={`${styles.day} ${date.getMonth() !== month ? styles.outside : ''}`}
+                                    className={`
+                                    ${styles.day} 
+                                    ${date.getMonth() !== month ? styles.outside : ''} 
+                                    ${date.getDay() === 0 || date.getDay() === 6 ? styles.weekend : ''}
+                                    `}
                                 >
-                                    {date.getDate()}
+                                    <span className={isToday(date) ? styles.today : ''}>{padZero(date.getDate())}</span>
                                 </div>
                             ))}
                         </div>
