@@ -1,0 +1,30 @@
+p {
+    margin: 0;
+}
+
+.taskWrapper {
+    display: flex;
+    flex-direction: column;
+    min-width: 60%;
+    min-height: 256px;
+    background-color: #f8d57e;
+    border-radius: 20px;
+    padding: 20px 30px;
+}
+
+.titleDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input {
+    font-family: IBMPlexMono;
+    font-weight: 600;
+    font-color: #2c2543;
+    font-size: 15px;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+}

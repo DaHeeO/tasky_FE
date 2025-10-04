@@ -7,6 +7,7 @@ body {
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
 }
 
 @font-face {
@@ -42,4 +43,10 @@ body {
     font-family: 'IBMPlexMono';
     font-weight: 400;
     src: url('./fonts/IBMPlexMono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'IBMPlexMono';
+    font-weight: 600;
+    src: url('./fonts/IBMPlexMono-SemiBold.ttf') format('truetype');
 }
